@@ -1,0 +1,42 @@
+aid: tazama
+name: Tazama
+description: >-
+  Tazama is the first open source platform for financial monitoring and fraud detection, launched by Linux Foundation Charities with support from the Bill and Melinda Gates Foundation. It provides real-time fraud management, AML compliance, and cost-effective monitoring of digital financial transactions.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Fraud Detection
+  - Financial
+  - Open Source
+  - Linux Foundation
+created: '2026-03-16'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: tazama:tazama-api
+    name: Tazama API
+    description: >-
+      API for accessing Tazama platform resources for real-time financial monitoring, fraud detection, and AML compliance in digital financial transactions.
+    humanURL: https://tazama.org/documentation
+    tags:
+      - Fraud Detection
+      - Financial
+    properties:
+      - type: Documentation
+        url: https://tazama.org/documentation
+common:
+  - type: Documentation
+    name: Tazama Documentation
+    description: Official documentation for Tazama.
+    url: https://tazama.org/documentation
+  - type: GitHubOrg
+    name: Tazama GitHub
+    description: Source code and repositories for Tazama.
+    url: https://github.com/tazama-lf
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
