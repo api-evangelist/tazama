@@ -7,10 +7,10 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Fraud Detection
   - Financial
-  - Open Source
+  - Fraud Detection
   - Linux Foundation
+  - Open Source
 created: '2026-03-16'
 modified: '2026-03-16'
 url: >-
@@ -23,8 +23,8 @@ apis:
       API for accessing Tazama platform resources for real-time financial monitoring, fraud detection, and AML compliance in digital financial transactions.
     humanURL: https://tazama.org/documentation
     tags:
-      - Fraud Detection
       - Financial
+      - Fraud Detection
     properties:
       - type: Documentation
         url: https://tazama.org/documentation
