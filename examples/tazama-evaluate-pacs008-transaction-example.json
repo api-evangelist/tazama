@@ -1,0 +1,170 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://localhost:5000/v1/evaluate/iso20022/pacs.008.001.10",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "FIToFICstmrCdtTrf": {
+        "GrpHdr": {
+          "MsgId": "8cc4f6ffb4fd4e31b42aec0ed5d600a0123",
+          "CreDtTm": "2021-11-09T09:25:31.000Z",
+          "NbOfTxs": 1,
+          "SttlmInf": {
+            "SttlmMtd": "CLRG"
+          }
+        },
+        "CdtTrfTxInf": {
+          "PmtId": {
+            "InstrId": "8cc4f6ffb4fd4e31b42aec0ed5d600a0123",
+            "EndToEndId": "8cc4f6ffb4fd4e31b42aec0ed5d600a0123"
+          },
+          "IntrBkSttlmAmt": {
+            "Amt": {
+              "Amt": 250.50,
+              "Ccy": "USD"
+            }
+          },
+          "InstdAmt": {
+            "Amt": {
+              "Amt": 250.50,
+              "Ccy": "USD"
+            }
+          },
+          "ChrgBr": "DEBT",
+          "ChrgsInf": {
+            "Amt": {
+              "Amt": 0.50,
+              "Ccy": "USD"
+            },
+            "Agt": {
+              "FinInstnId": {
+                "ClrSysMmbId": {
+                  "MmbId": "dfsp001"
+                }
+              }
+            }
+          },
+          "InitgPty": {
+            "Nm": "Ivan Reese Russel-Klein",
+            "Id": {
+              "PrvtId": {
+                "DtAndPlcOfBirth": {
+                  "BirthDt": "1967-11-23",
+                  "CityOfBirth": "Unknown",
+                  "CtryOfBirth": "SA"
+                },
+                "Othr": {
+                  "Id": "+27783078685",
+                  "SchmeNm": {
+                    "Prtry": "MSISDN"
+                  }
+                }
+              }
+            },
+            "CtctDtls": {
+              "MobNb": "+27-783078685"
+            }
+          },
+          "Dbtr": {
+            "Nm": "Ivan Reese Russel-Klein",
+            "Id": {
+              "PrvtId": {
+                "DtAndPlcOfBirth": {
+                  "BirthDt": "1967-11-23",
+                  "CityOfBirth": "Unknown",
+                  "CtryOfBirth": "ZA"
+                },
+                "Othr": {
+                  "Id": "+27783078685",
+                  "SchmeNm": {
+                    "Prtry": "MSISDN"
+                  }
+                }
+              }
+            },
+            "CtctDtls": {
+              "MobNb": "+27-783078685"
+            }
+          },
+          "DbtrAcct": {
+            "Id": {
+              "Othr": {
+                "Id": "+27783078685",
+                "SchmeNm": {
+                  "Prtry": "PASSPORT"
+                }
+              }
+            },
+            "Nm": "Ivan Russel-Klei"
+          },
+          "DbtrAgt": {
+            "FinInstnId": {
+              "ClrSysMmbId": {
+                "MmbId": "dfsp001"
+              }
+            }
+          },
+          "CdtrAgt": {
+            "FinInstnId": {
+              "ClrSysMmbId": {
+                "MmbId": "dfsp002"
+              }
+            }
+          },
+          "Cdtr": {
+            "Nm": "April Adamson",
+            "Id": {
+              "PrvtId": {
+                "DtAndPlcOfBirth": {
+                  "BirthDt": "1973-01-01",
+                  "CityOfBirth": "UNKNOWN",
+                  "CtryOfBirth": "ZA"
+                },
+                "Othr": {
+                  "Id": "+27783078686",
+                  "SchmeNm": {
+                    "Prtry": "MSISDN"
+                  }
+                }
+              }
+            },
+            "CtctDtls": {
+              "MobNb": "+27-783078686"
+            }
+          },
+          "Purp": {
+            "Cd": "MP2P"
+          }
+        },
+        "RgltryRptg": {
+          "Dtls": {
+            "Tp": "BALANCE OF PAYMENTS",
+            "Cd": "100"
+          }
+        },
+        "RmtInf": {
+          "Ustrd": "Payment for services"
+        },
+        "SplmtryData": {
+          "Envlp": {
+            "Doc": {
+              "Xprtn": "2021-10-07T09:30:31.000Z"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "message": "Transaction is valid",
+      "data": {}
+    }
+  }
+}

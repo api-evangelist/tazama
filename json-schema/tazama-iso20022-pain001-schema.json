@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tazama/main/json-schema/tazama-iso20022-pain001-schema.json",
+  "title": "ISO 20022 pain.001.001.11 Customer Credit Transfer Initiation",
+  "description": "JSON Schema for ISO 20022 pain.001.001.11 Customer Credit Transfer Initiation message as accepted by the Tazama Transaction Monitoring Service.",
+  "type": "object",
+  "required": ["CstmrCdtTrfInitn"],
+  "properties": {
+    "CstmrCdtTrfInitn": {
+      "type": "object",
+      "description": "Customer Credit Transfer Initiation",
+      "properties": {
+        "GrpHdr": {
+          "type": "object",
+          "description": "Group Header",
+          "required": ["MsgId", "CreDtTm", "NbOfTxs"],
+          "properties": {
+            "MsgId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 35,
+              "description": "Unique message identifier"
+            },
+            "CreDtTm": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Message creation date and time"
+            },
+            "NbOfTxs": {
+              "type": "integer",
+              "description": "Number of transactions"
+            },
+            "InitgPty": {
+              "type": "object",
+              "description": "Initiating Party",
+              "properties": {
+                "Nm": {
+                  "type": "string",
+                  "maxLength": 140,
+                  "description": "Initiating party name"
+                }
+              }
+            }
+          }
+        },
+        "PmtInf": {
+          "type": "object",
+          "description": "Payment Information",
+          "properties": {
+            "PmtInfId": {
+              "type": "string",
+              "maxLength": 35,
+              "description": "Payment information identifier"
+            },
+            "PmtMtd": {
+              "type": "string",
+              "description": "Payment method"
+            },
+            "Dbtr": {
+              "type": "object",
+              "description": "Debtor"
+            },
+            "DbtrAcct": {
+              "type": "object",
+              "description": "Debtor Account"
+            },
+            "DbtrAgt": {
+              "type": "object",
+              "description": "Debtor Agent (Financial Institution)"
+            },
+            "CdtTrfTxInf": {
+              "type": "object",
+              "description": "Credit Transfer Transaction Information"
+            }
+          }
+        },
+        "SplmtryData": {
+          "type": "object",
+          "description": "Supplementary Data including geolocation"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tazama/main/json-schema/tazama-transaction-response-schema.json",
+  "title": "Tazama Transaction Response",
+  "description": "Response schema returned by the Tazama Transaction Monitoring Service after evaluating an ISO 20022 transaction message for fraud and AML compliance.",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string",
+      "description": "Human-readable evaluation result message",
+      "examples": ["Transaction is valid", "Transaction flagged for review"]
+    },
+    "data": {
+      "type": "object",
+      "description": "Additional evaluation data including rule results and typology scores",
+      "properties": {
+        "ruleResults": {
+          "type": "array",
+          "description": "Results from individual rule processor evaluations",
+          "items": {
+            "$ref": "#/$defs/RuleResult"
+          }
+        },
+        "typologyScores": {
+          "type": "array",
+          "description": "Aggregated typology scores from rule results",
+          "items": {
+            "$ref": "#/$defs/TypologyScore"
+          }
+        },
+        "decision": {
+          "type": "string",
+          "description": "Overall decision from the Transaction Aggregation and Decisioning Processor",
+          "enum": ["ACCEPT", "BLOCK", "REVIEW"]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "RuleResult": {
+      "type": "object",
+      "description": "Result from a single rule processor evaluation",
+      "properties": {
+        "ruleId": {
+          "type": "string",
+          "description": "Unique identifier for the rule"
+        },
+        "ruleDescription": {
+          "type": "string",
+          "description": "Human-readable description of the rule"
+        },
+        "score": {
+          "type": "number",
+          "description": "Numeric score from the rule evaluation"
+        },
+        "threshold": {
+          "type": "number",
+          "description": "Threshold value for the rule"
+        },
+        "triggered": {
+          "type": "boolean",
+          "description": "Whether the rule was triggered"
+        }
+      }
+    },
+    "TypologyScore": {
+      "type": "object",
+      "description": "Aggregated score for a fraud/AML typology",
+      "properties": {
+        "typologyId": {
+          "type": "string",
+          "description": "Unique identifier for the typology"
+        },
+        "typologyDescription": {
+          "type": "string",
+          "description": "Description of the fraud or money laundering pattern"
+        },
+        "score": {
+          "type": "number",
+          "description": "Aggregated typology score"
+        },
+        "threshold": {
+          "type": "number",
+          "description": "Alert threshold for this typology"
+        },
+        "alertGenerated": {
+          "type": "boolean",
+          "description": "Whether an alert was generated for this typology"
+        }
+      }
+    }
+  }
+}

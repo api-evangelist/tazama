@@ -1,0 +1,140 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "http://localhost:5000/v1/evaluate/iso20022/pain.001.001.11",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "CstmrCdtTrfInitn": {
+        "GrpHdr": {
+          "MsgId": "8cc4f6ffb4fd4e31b42aec0ed5d600a0123",
+          "CreDtTm": "2021-10-07T09:25:31.000Z",
+          "NbOfTxs": 1,
+          "InitgPty": {
+            "Nm": "Ivan Reese Russel-Klein",
+            "Id": {
+              "PrvtId": {
+                "DtAndPlcOfBirth": {
+                  "BirthDt": "1967-11-23",
+                  "CityOfBirth": "Unknown",
+                  "CtryOfBirth": "ZZ"
+                },
+                "Othr": {
+                  "Id": "+27783078685",
+                  "SchmeNm": {
+                    "Prtry": "MSISDN"
+                  }
+                }
+              }
+            },
+            "CtctDtls": {
+              "MobNb": "+27-783078685"
+            }
+          }
+        },
+        "PmtInf": {
+          "PmtInfId": "8cc4f6ffb4fd4e31b42aec0ed5d600a0123",
+          "PmtMtd": "TRA",
+          "ReqdExctnDt": {
+            "Dt": "2021-10-07",
+            "DtTm": "2021-10-07T09:25:31.000Z"
+          },
+          "Dbtr": {
+            "Nm": "Ivan Reese Russel-Klein",
+            "Id": {
+              "PrvtId": {
+                "DtAndPlcOfBirth": {
+                  "BirthDt": "1967-11-23",
+                  "CityOfBirth": "Unknown",
+                  "CtryOfBirth": "ZZ"
+                },
+                "Othr": {
+                  "Id": "+27783078685",
+                  "SchmeNm": {
+                    "Prtry": "MSISDN"
+                  }
+                }
+              }
+            },
+            "CtctDtls": {
+              "MobNb": "+27-783078685"
+            }
+          },
+          "DbtrAcct": {
+            "Id": {
+              "Othr": {
+                "Id": "+27783078685",
+                "SchmeNm": {
+                  "Prtry": "PASSPORT"
+                }
+              }
+            },
+            "Nm": "Ivan Russel-Klei"
+          },
+          "DbtrAgt": {
+            "FinInstnId": {
+              "ClrSysMmbId": {
+                "MmbId": "dfsp001"
+              }
+            }
+          },
+          "CdtTrfTxInf": {
+            "CdtrAgt": {
+              "FinInstnId": {
+                "ClrSysMmbId": {
+                  "MmbId": "dfsp002"
+                }
+              }
+            },
+            "PmtId": {
+              "EndToEndId": "8cc4f6ffb4fd4e31b42aec0ed5d600a0123"
+            },
+            "Amt": {
+              "InstdAmt": {
+                "Amt": {
+                  "Amt": 250.50,
+                  "Ccy": "USD"
+                }
+              }
+            },
+            "CdtrAcct": {
+              "Id": {
+                "Othr": {
+                  "Id": "+27783078685",
+                  "SchmeNm": {
+                    "Prtry": "MSISDN"
+                  }
+                }
+              },
+              "Nm": "April Adamson"
+            }
+          }
+        },
+        "SplmtryData": {
+          "Envlp": {
+            "Doc": {
+              "InitgPty": {
+                "InitrTp": "CONSUMER",
+                "Glctn": {
+                  "Lat": "-3.1291",
+                  "Long": "39.0006"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "message": "Transaction is valid",
+      "data": {}
+    }
+  }
+}

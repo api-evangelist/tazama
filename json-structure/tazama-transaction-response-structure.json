@@ -1,0 +1,56 @@
+{
+  "name": "TransactionResponse",
+  "description": "Tazama transaction monitoring evaluation response",
+  "fields": [
+    {
+      "name": "message",
+      "type": "string",
+      "description": "Human-readable evaluation result",
+      "required": false
+    },
+    {
+      "name": "data",
+      "type": "object",
+      "description": "Evaluation data payload",
+      "required": false,
+      "fields": [
+        {
+          "name": "ruleResults",
+          "type": "array",
+          "description": "Individual rule processor results",
+          "required": false,
+          "items": {
+            "name": "RuleResult",
+            "type": "object",
+            "fields": [
+              {"name": "ruleId", "type": "string", "description": "Rule identifier"},
+              {"name": "score", "type": "number", "description": "Rule score"},
+              {"name": "triggered", "type": "boolean", "description": "Whether rule was triggered"}
+            ]
+          }
+        },
+        {
+          "name": "typologyScores",
+          "type": "array",
+          "description": "Aggregated typology scores",
+          "required": false,
+          "items": {
+            "name": "TypologyScore",
+            "type": "object",
+            "fields": [
+              {"name": "typologyId", "type": "string", "description": "Typology identifier"},
+              {"name": "score", "type": "number", "description": "Aggregated score"},
+              {"name": "alertGenerated", "type": "boolean", "description": "Whether an alert was generated"}
+            ]
+          }
+        },
+        {
+          "name": "decision",
+          "type": "string",
+          "description": "Overall TADProc decision (ACCEPT, BLOCK, REVIEW)",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

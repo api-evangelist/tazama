@@ -1,0 +1,102 @@
+extends: spectral:oas
+rules:
+  tazama-iso20022-paths:
+    description: ISO 20022 transaction paths should follow the /v1/evaluate/iso20022/{messageType} pattern
+    message: "Path '{{property}}' should follow /v1/evaluate/iso20022/{messageType} convention for ISO 20022 endpoints"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/v1/evaluate/iso20022/|/|/health)"
+
+  tazama-operation-ids-required:
+    description: All operations must have operationId defined
+    message: "Operation at '{{path}}' is missing operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: operationId
+      function: defined
+
+  tazama-operation-ids-kebab-case:
+    description: operationId values should use camelCase convention consistent with Tazama TypeScript codebase
+    message: "operationId '{{value}}' should use camelCase"
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  tazama-request-body-json:
+    description: POST endpoints accepting transaction data should require application/json content type
+    message: "POST operation at '{{path}}' should require application/json request body"
+    severity: warn
+    given: "$.paths[*].post.requestBody.content"
+    then:
+      field: "application/json"
+      function: defined
+
+  tazama-response-200-defined:
+    description: All operations should define a 200 or 201 success response
+    message: "Operation at '{{path}}' is missing a success response (200 or 201)"
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+
+  tazama-error-responses:
+    description: All operations should define 400 and 500 error responses
+    message: "Operation is missing error response definitions"
+    severity: warn
+    given: "$.paths[*][post].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          required:
+            - "400"
+            - "500"
+
+  tazama-info-contact:
+    description: API info should include contact information
+    message: "API info is missing contact details"
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: defined
+
+  tazama-tags-defined:
+    description: All operations should be tagged for proper grouping
+    message: "Operation at '{{path}}' is missing tags"
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: tags
+      function: defined
+
+  tazama-description-required:
+    description: Operations should have descriptions explaining their purpose
+    message: "Operation at '{{path}}' is missing a description"
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: description
+      function: defined
+
+  tazama-schemas-named:
+    description: All schemas in components should be named using PascalCase
+    message: "Schema '{{property}}' should use PascalCase naming"
+    severity: warn
+    given: "$.components.schemas[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9]*$"
