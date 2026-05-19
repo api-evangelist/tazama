@@ -1,0 +1,204 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tazama Transaction Monitoring Service API — Transaction Evaluation
+  description: 'Tazama Transaction Monitoring Service API — Transaction Evaluation. 4 operations. Lead operation: Evaluate
+    Pacs 002 Transaction. Self-contained Naftiko capability covering one Tazama business surface.'
+  tags:
+  - Tazama
+  - Transaction Evaluation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TAZAMA_API_KEY: TAZAMA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: transaction-monitoring-service-transaction-evaluation
+    baseUri: http://localhost:5000
+    description: Tazama Transaction Monitoring Service API — Transaction Evaluation business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: v1-evaluate-iso20022-pacs.002.001.12
+      path: /v1/evaluate/iso20022/pacs.002.001.12
+      operations:
+      - name: evaluatepacs002transaction
+        method: POST
+        description: Evaluate Pacs 002 Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-evaluate-iso20022-pacs.008.001.10
+      path: /v1/evaluate/iso20022/pacs.008.001.10
+      operations:
+      - name: evaluatepacs008transaction
+        method: POST
+        description: Evaluate Pacs 008 Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-evaluate-iso20022-pain.001.001.11
+      path: /v1/evaluate/iso20022/pain.001.001.11
+      operations:
+      - name: evaluatepain001transaction
+        method: POST
+        description: Evaluate Pain 001 Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-evaluate-iso20022-pain.013.001.09
+      path: /v1/evaluate/iso20022/pain.013.001.09
+      operations:
+      - name: evaluatepain013transaction
+        method: POST
+        description: Evaluate Pain 013 Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: transaction-monitoring-service-transaction-evaluation-rest
+    port: 8080
+    description: REST adapter for Tazama Transaction Monitoring Service API — Transaction Evaluation. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/evaluate/iso20022/pacs-002-001-12
+      name: v1-evaluate-iso20022-pacs-002-001-12
+      description: REST surface for v1-evaluate-iso20022-pacs.002.001.12.
+      operations:
+      - method: POST
+        name: evaluatepacs002transaction
+        description: Evaluate Pacs 002 Transaction
+        call: transaction-monitoring-service-transaction-evaluation.evaluatepacs002transaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/evaluate/iso20022/pacs-008-001-10
+      name: v1-evaluate-iso20022-pacs-008-001-10
+      description: REST surface for v1-evaluate-iso20022-pacs.008.001.10.
+      operations:
+      - method: POST
+        name: evaluatepacs008transaction
+        description: Evaluate Pacs 008 Transaction
+        call: transaction-monitoring-service-transaction-evaluation.evaluatepacs008transaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/evaluate/iso20022/pain-001-001-11
+      name: v1-evaluate-iso20022-pain-001-001-11
+      description: REST surface for v1-evaluate-iso20022-pain.001.001.11.
+      operations:
+      - method: POST
+        name: evaluatepain001transaction
+        description: Evaluate Pain 001 Transaction
+        call: transaction-monitoring-service-transaction-evaluation.evaluatepain001transaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/evaluate/iso20022/pain-013-001-09
+      name: v1-evaluate-iso20022-pain-013-001-09
+      description: REST surface for v1-evaluate-iso20022-pain.013.001.09.
+      operations:
+      - method: POST
+        name: evaluatepain013transaction
+        description: Evaluate Pain 013 Transaction
+        call: transaction-monitoring-service-transaction-evaluation.evaluatepain013transaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: transaction-monitoring-service-transaction-evaluation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tazama Transaction Monitoring Service API — Transaction Evaluation. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: evaluate-pacs-002-transaction
+      description: Evaluate Pacs 002 Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: transaction-monitoring-service-transaction-evaluation.evaluatepacs002transaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: evaluate-pacs-008-transaction
+      description: Evaluate Pacs 008 Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: transaction-monitoring-service-transaction-evaluation.evaluatepacs008transaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: evaluate-pain-001-transaction
+      description: Evaluate Pain 001 Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: transaction-monitoring-service-transaction-evaluation.evaluatepain001transaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: evaluate-pain-013-transaction
+      description: Evaluate Pain 013 Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: transaction-monitoring-service-transaction-evaluation.evaluatepain013transaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
