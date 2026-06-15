@@ -1,0 +1,1193 @@
+{
+  "item": [
+    {
+      "id": "af12b40f-a638-4bea-a145-47229cd58ae3",
+      "name": "Health",
+      "description": {
+        "content": "Service health check operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f3c5b7d2-2dfd-4ca3-920b-6077e9919b55",
+          "name": "Get Service Status",
+          "request": {
+            "name": "Get Service Status",
+            "description": {
+              "content": "Check if the Transaction Monitoring Service is up and running correctly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83761934-940b-4bdc-8eab-2f72590afd7d",
+              "name": "Service is up and running",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0131a5dc-bf81-4334-87e7-1fb38039fd2b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4bf0fcb-505d-4b73-acb5-b17f2c53d05d",
+          "name": "Get Health Status",
+          "request": {
+            "name": "Get Health Status",
+            "description": {
+              "content": "Check the health status of the Transaction Monitoring Service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f709f67-029f-44e9-9f0a-e33428a43af5",
+              "name": "Service is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b48c28a2-8889-458b-86b5-681fda05b921",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e6337516-b109-4042-91a2-3dad30e84d28",
+      "name": "Transaction Evaluation",
+      "description": {
+        "content": "ISO 20022 transaction message evaluation for fraud and AML detection",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6bd96db0-529e-4246-ad49-12ccbed1b9a4",
+          "name": "Evaluate Pain 001 Transaction",
+          "request": {
+            "name": "Evaluate Pain 001 Transaction",
+            "description": {
+              "content": "Evaluates an ISO 20022 pain.001.001.11 formatted message (Customer Credit Transfer Initiation). Historically corresponds to a Mojaloop Quote message. Validates the message and initiates real-time fraud and AML rule processing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "evaluate",
+                "iso20022",
+                "pain.001.001.11"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CstmrCdtTrfInitn\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"<string>\",\n      \"CreDtTm\": \"<dateTime>\",\n      \"NbOfTxs\": \"<integer>\",\n      \"InitgPty\": {\n        \"Nm\": \"<string>\"\n      }\n    },\n    \"PmtInf\": {\n      \"PmtInfId\": \"<string>\",\n      \"PmtMtd\": \"<string>\",\n      \"Dbtr\": {\n        \"Nm\": \"<string>\"\n      },\n      \"DbtrAcct\": {\n        \"Id\": {\n          \"Othr\": {\n            \"Id\": \"<string>\"\n          }\n        }\n      },\n      \"DbtrAgt\": {\n        \"FinInstnId\": {\n          \"ClrSysMmbId\": {\n            \"MmbId\": \"<string>\"\n          }\n        }\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec594ed0-4e9a-494b-9844-4199c75617bc",
+              "name": "Transaction evaluated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pain.001.001.11"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CstmrCdtTrfInitn\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-10-07T09:25:31.000Z\",\n      \"NbOfTxs\": 1,\n      \"InitgPty\": {\n        \"Nm\": \"Ivan Reese Russel-Klein\"\n      }\n    },\n    \"PmtInf\": {\n      \"PmtInfId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"PmtMtd\": \"TRA\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Transaction is valid\",\n  \"data\": {\n    \"key_0\": 253,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03b215ff-21ae-4a2c-a60c-57ada10cee74",
+              "name": "Bad Request - Invalid message format or missing required fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pain.001.001.11"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CstmrCdtTrfInitn\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-10-07T09:25:31.000Z\",\n      \"NbOfTxs\": 1,\n      \"InitgPty\": {\n        \"Nm\": \"Ivan Reese Russel-Klein\"\n      }\n    },\n    \"PmtInf\": {\n      \"PmtInfId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"PmtMtd\": \"TRA\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94405da0-f14b-4961-9ca7-82b81cad0597",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pain.001.001.11"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CstmrCdtTrfInitn\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-10-07T09:25:31.000Z\",\n      \"NbOfTxs\": 1,\n      \"InitgPty\": {\n        \"Nm\": \"Ivan Reese Russel-Klein\"\n      }\n    },\n    \"PmtInf\": {\n      \"PmtInfId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"PmtMtd\": \"TRA\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19fc154a-5b3b-4cb9-8dca-96ad70ff167c",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pain.001.001.11"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CstmrCdtTrfInitn\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-10-07T09:25:31.000Z\",\n      \"NbOfTxs\": 1,\n      \"InitgPty\": {\n        \"Nm\": \"Ivan Reese Russel-Klein\"\n      }\n    },\n    \"PmtInf\": {\n      \"PmtInfId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"PmtMtd\": \"TRA\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2913712-f0e8-4d8c-b47e-8f773db2c6ed",
+          "name": "Evaluate Pain 013 Transaction",
+          "request": {
+            "name": "Evaluate Pain 013 Transaction",
+            "description": {
+              "content": "Evaluates an ISO 20022 pain.013.001.09 formatted message (Creditor Payment Activation Request). Historically corresponds to a Mojaloop Quote Response message. Validates the message and initiates real-time fraud and AML rule processing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "evaluate",
+                "iso20022",
+                "pain.013.001.09"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CdtrPmtActvtnReq\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"<string>\",\n      \"CreDtTm\": \"<dateTime>\",\n      \"NbOfTxs\": \"<integer>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ea5c1fd-a7a8-400c-a259-021eebcde047",
+              "name": "Transaction evaluated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pain.013.001.09"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CdtrPmtActvtnReq\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-10-07T09:25:31.000Z\",\n      \"NbOfTxs\": 1\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Transaction is valid\",\n  \"data\": {\n    \"key_0\": 253,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffdcac4a-93c9-47a4-8277-58982265c42b",
+              "name": "Bad Request - Invalid message format or missing required fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pain.013.001.09"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CdtrPmtActvtnReq\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-10-07T09:25:31.000Z\",\n      \"NbOfTxs\": 1\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "523559e6-0193-42b7-bfd0-1cd6b23a8f15",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pain.013.001.09"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CdtrPmtActvtnReq\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-10-07T09:25:31.000Z\",\n      \"NbOfTxs\": 1\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d5af97d-d6dd-40d6-ad48-52aaa11be108",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pain.013.001.09"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CdtrPmtActvtnReq\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-10-07T09:25:31.000Z\",\n      \"NbOfTxs\": 1\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46155d08-e806-495b-8bed-9a3e3dbec87b",
+          "name": "Evaluate Pacs 008 Transaction",
+          "request": {
+            "name": "Evaluate Pacs 008 Transaction",
+            "description": {
+              "content": "Evaluates an ISO 20022 pacs.008.001.10 formatted message (Financial Institution to Financial Institution Customer Credit Transfer). Historically corresponds to a Mojaloop Transfer message. Validates the message and initiates real-time fraud and AML rule processing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "evaluate",
+                "iso20022",
+                "pacs.008.001.10"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"FIToFICstmrCdtTrf\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"<string>\",\n      \"CreDtTm\": \"<dateTime>\",\n      \"NbOfTxs\": \"<integer>\",\n      \"SttlmInf\": {\n        \"SttlmMtd\": \"<string>\"\n      }\n    },\n    \"CdtTrfTxInf\": {\n      \"PmtId\": {\n        \"InstrId\": \"<string>\",\n        \"EndToEndId\": \"<string>\"\n      },\n      \"Dbtr\": {\n        \"Nm\": \"<string>\"\n      },\n      \"Cdtr\": {\n        \"Nm\": \"<string>\"\n      },\n      \"ChrgBr\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "585f2324-698a-4d32-9320-c1096ac2fd37",
+              "name": "Transaction evaluated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pacs.008.001.10"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FIToFICstmrCdtTrf\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-11-09T09:25:31.000Z\",\n      \"NbOfTxs\": 1,\n      \"SttlmInf\": {\n        \"SttlmMtd\": \"CLRG\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Transaction is valid\",\n  \"data\": {\n    \"key_0\": 253,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2672e27e-0ec3-40d0-9cbd-fd1e49554a31",
+              "name": "Bad Request - Invalid message format or missing required fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pacs.008.001.10"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FIToFICstmrCdtTrf\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-11-09T09:25:31.000Z\",\n      \"NbOfTxs\": 1,\n      \"SttlmInf\": {\n        \"SttlmMtd\": \"CLRG\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d83a81b2-dfd0-426c-b2de-a552a1b7750e",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pacs.008.001.10"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FIToFICstmrCdtTrf\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-11-09T09:25:31.000Z\",\n      \"NbOfTxs\": 1,\n      \"SttlmInf\": {\n        \"SttlmMtd\": \"CLRG\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cec50ed3-cc14-4408-abbc-08a2d254c17a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pacs.008.001.10"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FIToFICstmrCdtTrf\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-11-09T09:25:31.000Z\",\n      \"NbOfTxs\": 1,\n      \"SttlmInf\": {\n        \"SttlmMtd\": \"CLRG\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8270f164-10b4-4b61-b5d3-165103864aee",
+          "name": "Evaluate Pacs 002 Transaction",
+          "request": {
+            "name": "Evaluate Pacs 002 Transaction",
+            "description": {
+              "content": "Evaluates an ISO 20022 pacs.002.001.12 formatted message (Financial Institution to Financial Institution Payment Status Report). Validates the message and initiates real-time fraud and AML rule processing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "evaluate",
+                "iso20022",
+                "pacs.002.001.12"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"FIToFIPmtSts\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"<string>\",\n      \"CreDtTm\": \"<dateTime>\"\n    },\n    \"TxInfAndSts\": {\n      \"OrgnlInstrId\": \"<string>\",\n      \"OrgnlEndToEndId\": \"<string>\",\n      \"TxSts\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bbcdc171-690c-4468-bf81-b21bec18c7e2",
+              "name": "Transaction evaluated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pacs.002.001.12"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FIToFIPmtSts\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-09-13T15:56:49.000Z\"\n    },\n    \"TxInfAndSts\": {\n      \"TxSts\": \"ACSC\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Transaction is valid\",\n  \"data\": {\n    \"key_0\": 253,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13b3e13b-c08a-4f9b-8e9f-3b5a8a8d6132",
+              "name": "Bad Request - Invalid message format or missing required fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pacs.002.001.12"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FIToFIPmtSts\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-09-13T15:56:49.000Z\"\n    },\n    \"TxInfAndSts\": {\n      \"TxSts\": \"ACSC\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c710a7d8-69d7-41a2-bdea-ee45e729c962",
+              "name": "Unauthorized - Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pacs.002.001.12"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FIToFIPmtSts\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-09-13T15:56:49.000Z\"\n    },\n    \"TxInfAndSts\": {\n      \"TxSts\": \"ACSC\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3087bb38-52fe-416c-9000-0d490deda3b4",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "evaluate",
+                    "iso20022",
+                    "pacs.002.001.12"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FIToFIPmtSts\": {\n    \"GrpHdr\": {\n      \"MsgId\": \"8cc4f6ffb4fd4e31b42aec0ed5d600a0123\",\n      \"CreDtTm\": \"2021-09-13T15:56:49.000Z\"\n    },\n    \"TxInfAndSts\": {\n      \"TxSts\": \"ACSC\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"error\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5000",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c5bd4d71-4312-4386-833c-8905a675afef",
+    "name": "Tazama Transaction Monitoring Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tazama Transaction Monitoring Service (TMS) API ingests real-time ISO 20022 financial transaction messages for fraud detection and AML compliance. Supports pain.001, pain.013, pacs.008, and pacs.002 message types from financial service providers including banks, remitters, mobile money operators, clearing houses, and payment switches. The service validates messages, routes them through configurable rule processors, and returns fraud and AML evaluation results.\n\nContact Support:\n Name: Tazama",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tazama Transaction Monitoring Service API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Service Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:5000/"
+          },
+          "docs": "Check if the Transaction Monitoring Service is up and running correctly."
+        },
+        {
+          "info": {
+            "name": "Get Health Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:5000/health"
+          },
+          "docs": "Check the health status of the Transaction Monitoring Service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transaction Evaluation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Evaluate Pain 001 Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5000/v1/evaluate/iso20022/pain.001.001.11",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluates an ISO 20022 pain.001.001.11 formatted message (Customer Credit Transfer Initiation). Historically corresponds to a Mojaloop Quote message. Validates the message and initiates real-time fraud and AML rule processing."
+        },
+        {
+          "info": {
+            "name": "Evaluate Pain 013 Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5000/v1/evaluate/iso20022/pain.013.001.09",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluates an ISO 20022 pain.013.001.09 formatted message (Creditor Payment Activation Request). Historically corresponds to a Mojaloop Quote Response message. Validates the message and initiates real-time fraud and AML rule processing."
+        },
+        {
+          "info": {
+            "name": "Evaluate Pacs 008 Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5000/v1/evaluate/iso20022/pacs.008.001.10",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluates an ISO 20022 pacs.008.001.10 formatted message (Financial Institution to Financial Institution Customer Credit Transfer). Historically corresponds to a Mojaloop Transfer message. Validates the message and initiates real-time fraud and AML rule processing."
+        },
+        {
+          "info": {
+            "name": "Evaluate Pacs 002 Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5000/v1/evaluate/iso20022/pacs.002.001.12",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluates an ISO 20022 pacs.002.001.12 formatted message (Financial Institution to Financial Institution Payment Status Report). Validates the message and initiates real-time fraud and AML rule processing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
