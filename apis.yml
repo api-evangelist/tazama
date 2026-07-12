@@ -73,6 +73,10 @@ apis:
   - FN: Tazama Support
     url: https://tazama.org
 common:
+- type: DomainSecurity
+  url: security/tazama-domain-security.yml
+- url: https://www.tazama.org/feed/
+  type: Blog
 - type: LinkedIn
   url: https://www.linkedin.com/company/tazama-org
 - type: Documentation
