@@ -73,6 +73,8 @@ apis:
   - FN: Tazama Support
     url: https://tazama.org
 common:
+- type: AgenticAccess
+  url: agentic-access/tazama-agentic-access.yml
 - type: DomainSecurity
   url: security/tazama-domain-security.yml
 - url: https://www.tazama.org/feed/
