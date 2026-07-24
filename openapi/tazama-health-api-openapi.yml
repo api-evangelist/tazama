@@ -1,0 +1,80 @@
+openapi: 3.0.3
+info:
+  title: Tazama Transaction Monitoring Service Health API
+  description: The Tazama Transaction Monitoring Service (TMS) API ingests real-time ISO 20022 financial transaction messages for fraud detection and AML compliance. Supports pain.001, pain.013, pacs.008, and pacs.002 message types from financial service providers including banks, remitters, mobile money operators, clearing houses, and payment switches. The service validates messages, routes them through configurable rule processors, and returns fraud and AML evaluation results.
+  version: 0.1.0
+  contact:
+    name: Tazama
+    url: https://tazama.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:5000
+  description: Local Development Server
+tags:
+- name: Health
+  description: Service health check operations
+paths:
+  /:
+    get:
+      operationId: getServiceStatus
+      summary: Get Service Status
+      description: Check if the Transaction Monitoring Service is up and running correctly.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Service is up and running
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /health:
+    get:
+      operationId: getHealthStatus
+      summary: Get Health Status
+      description: Check the health status of the Transaction Monitoring Service.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Health:
+      type: object
+      description: Service health status response
+      properties:
+        status:
+          type: string
+          enum:
+          - UP
+          - DOWN
+          description: Current service status
+          example: UP
+    Error:
+      type: object
+      description: Error response
+      properties:
+        data:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message description

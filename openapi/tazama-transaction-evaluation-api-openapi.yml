@@ -1,13 +1,7 @@
 openapi: 3.0.3
 info:
-  title: Tazama Transaction Monitoring Service API
-  description: >-
-    The Tazama Transaction Monitoring Service (TMS) API ingests real-time ISO 20022
-    financial transaction messages for fraud detection and AML compliance. Supports
-    pain.001, pain.013, pacs.008, and pacs.002 message types from financial service
-    providers including banks, remitters, mobile money operators, clearing houses,
-    and payment switches. The service validates messages, routes them through
-    configurable rule processors, and returns fraud and AML evaluation results.
+  title: Tazama Transaction Monitoring Service Health Transaction Evaluation API
+  description: The Tazama Transaction Monitoring Service (TMS) API ingests real-time ISO 20022 financial transaction messages for fraud detection and AML compliance. Supports pain.001, pain.013, pacs.008, and pacs.002 message types from financial service providers including banks, remitters, mobile money operators, clearing houses, and payment switches. The service validates messages, routes them through configurable rule processors, and returns fraud and AML evaluation results.
   version: 0.1.0
   contact:
     name: Tazama
@@ -16,56 +10,19 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-  - url: http://localhost:5000
-    description: Local Development Server
+- url: http://localhost:5000
+  description: Local Development Server
 tags:
-  - name: Health
-    description: Service health check operations
-  - name: Transaction Evaluation
-    description: ISO 20022 transaction message evaluation for fraud and AML detection
+- name: Transaction Evaluation
+  description: ISO 20022 transaction message evaluation for fraud and AML detection
 paths:
-  /:
-    get:
-      operationId: getServiceStatus
-      summary: Get Service Status
-      description: Check if the Transaction Monitoring Service is up and running correctly.
-      tags:
-        - Health
-      responses:
-        '200':
-          description: Service is up and running
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Health'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /health:
-    get:
-      operationId: getHealthStatus
-      summary: Get Health Status
-      description: Check the health status of the Transaction Monitoring Service.
-      tags:
-        - Health
-      responses:
-        '200':
-          description: Service is healthy
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Health'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
   /v1/evaluate/iso20022/pain.001.001.11:
     post:
       operationId: evaluatePain001Transaction
       summary: Evaluate Pain 001 Transaction
-      description: >-
-        Evaluates an ISO 20022 pain.001.001.11 formatted message (Customer Credit
-        Transfer Initiation). Historically corresponds to a Mojaloop Quote message.
-        Validates the message and initiates real-time fraud and AML rule processing.
+      description: Evaluates an ISO 20022 pain.001.001.11 formatted message (Customer Credit Transfer Initiation). Historically corresponds to a Mojaloop Quote message. Validates the message and initiates real-time fraud and AML rule processing.
       tags:
-        - Transaction Evaluation
+      - Transaction Evaluation
       requestBody:
         required: true
         description: ISO 20022 pain.001.001.11 customer credit transfer initiation message
@@ -76,14 +33,14 @@ paths:
             example:
               CstmrCdtTrfInitn:
                 GrpHdr:
-                  MsgId: "8cc4f6ffb4fd4e31b42aec0ed5d600a0123"
-                  CreDtTm: "2021-10-07T09:25:31.000Z"
+                  MsgId: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                  CreDtTm: '2021-10-07T09:25:31.000Z'
                   NbOfTxs: 1
                   InitgPty:
-                    Nm: "Ivan Reese Russel-Klein"
+                    Nm: Ivan Reese Russel-Klein
                 PmtInf:
-                  PmtInfId: "8cc4f6ffb4fd4e31b42aec0ed5d600a0123"
-                  PmtMtd: "TRA"
+                  PmtInfId: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                  PmtMtd: TRA
       responses:
         '200':
           description: Transaction evaluated successfully
@@ -101,13 +58,9 @@ paths:
     post:
       operationId: evaluatePain013Transaction
       summary: Evaluate Pain 013 Transaction
-      description: >-
-        Evaluates an ISO 20022 pain.013.001.09 formatted message (Creditor Payment
-        Activation Request). Historically corresponds to a Mojaloop Quote Response
-        message. Validates the message and initiates real-time fraud and AML rule
-        processing.
+      description: Evaluates an ISO 20022 pain.013.001.09 formatted message (Creditor Payment Activation Request). Historically corresponds to a Mojaloop Quote Response message. Validates the message and initiates real-time fraud and AML rule processing.
       tags:
-        - Transaction Evaluation
+      - Transaction Evaluation
       requestBody:
         required: true
         description: ISO 20022 pain.013.001.09 creditor payment activation request message
@@ -118,8 +71,8 @@ paths:
             example:
               CdtrPmtActvtnReq:
                 GrpHdr:
-                  MsgId: "8cc4f6ffb4fd4e31b42aec0ed5d600a0123"
-                  CreDtTm: "2021-10-07T09:25:31.000Z"
+                  MsgId: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                  CreDtTm: '2021-10-07T09:25:31.000Z'
                   NbOfTxs: 1
       responses:
         '200':
@@ -138,13 +91,9 @@ paths:
     post:
       operationId: evaluatePacs008Transaction
       summary: Evaluate Pacs 008 Transaction
-      description: >-
-        Evaluates an ISO 20022 pacs.008.001.10 formatted message (Financial Institution
-        to Financial Institution Customer Credit Transfer). Historically corresponds to
-        a Mojaloop Transfer message. Validates the message and initiates real-time
-        fraud and AML rule processing.
+      description: Evaluates an ISO 20022 pacs.008.001.10 formatted message (Financial Institution to Financial Institution Customer Credit Transfer). Historically corresponds to a Mojaloop Transfer message. Validates the message and initiates real-time fraud and AML rule processing.
       tags:
-        - Transaction Evaluation
+      - Transaction Evaluation
       requestBody:
         required: true
         description: ISO 20022 pacs.008.001.10 FI to FI customer credit transfer message
@@ -155,11 +104,11 @@ paths:
             example:
               FIToFICstmrCdtTrf:
                 GrpHdr:
-                  MsgId: "8cc4f6ffb4fd4e31b42aec0ed5d600a0123"
-                  CreDtTm: "2021-11-09T09:25:31.000Z"
+                  MsgId: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                  CreDtTm: '2021-11-09T09:25:31.000Z'
                   NbOfTxs: 1
                   SttlmInf:
-                    SttlmMtd: "CLRG"
+                    SttlmMtd: CLRG
       responses:
         '200':
           description: Transaction evaluated successfully
@@ -177,12 +126,9 @@ paths:
     post:
       operationId: evaluatePacs002Transaction
       summary: Evaluate Pacs 002 Transaction
-      description: >-
-        Evaluates an ISO 20022 pacs.002.001.12 formatted message (Financial Institution
-        to Financial Institution Payment Status Report). Validates the message and
-        initiates real-time fraud and AML rule processing.
+      description: Evaluates an ISO 20022 pacs.002.001.12 formatted message (Financial Institution to Financial Institution Payment Status Report). Validates the message and initiates real-time fraud and AML rule processing.
       tags:
-        - Transaction Evaluation
+      - Transaction Evaluation
       requestBody:
         required: true
         description: ISO 20022 pacs.002.001.12 payment status report message
@@ -193,10 +139,10 @@ paths:
             example:
               FIToFIPmtSts:
                 GrpHdr:
-                  MsgId: "8cc4f6ffb4fd4e31b42aec0ed5d600a0123"
-                  CreDtTm: "2021-09-13T15:56:49.000Z"
+                  MsgId: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                  CreDtTm: '2021-09-13T15:56:49.000Z'
                 TxInfAndSts:
-                  TxSts: "ACSC"
+                  TxSts: ACSC
       responses:
         '200':
           description: Transaction evaluated successfully
@@ -212,14 +158,14 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   responses:
-    BadRequest:
-      description: Bad Request - Invalid message format or missing required fields
+    Unauthorized:
+      description: Unauthorized - Authentication required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized - Authentication required
+    BadRequest:
+      description: Bad Request - Invalid message format or missing required fields
       content:
         application/json:
           schema:
@@ -231,46 +177,11 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Health:
-      type: object
-      description: Service health status response
-      properties:
-        status:
-          type: string
-          enum:
-            - UP
-            - DOWN
-          description: Current service status
-          example: UP
-    TransactionResponse:
-      type: object
-      description: Response returned after evaluating a transaction message
-      properties:
-        message:
-          type: string
-          description: Human-readable evaluation result message
-          example: Transaction is valid
-        data:
-          type: object
-          description: Additional evaluation data including rule results and typology scores
-          additionalProperties: true
-    Error:
-      type: object
-      description: Error response
-      properties:
-        data:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error message description
     ISO20022Pain001:
       type: object
-      description: >-
-        ISO 20022 pain.001.001.11 Customer Credit Transfer Initiation message.
-        Used for initiating credit transfers from a debtor to one or more creditors.
+      description: ISO 20022 pain.001.001.11 Customer Credit Transfer Initiation message. Used for initiating credit transfers from a debtor to one or more creditors.
       required:
-        - CstmrCdtTrfInitn
+      - CstmrCdtTrfInitn
       properties:
         CstmrCdtTrfInitn:
           type: object
@@ -284,7 +195,7 @@ components:
                   type: string
                   minLength: 1
                   maxLength: 35
-                  example: '8cc4f6ffb4fd4e31b42aec0ed5d600a0123'
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
                 CreDtTm:
                   type: string
                   format: date-time
@@ -299,7 +210,7 @@ components:
                     Nm:
                       type: string
                       maxLength: 140
-                      example: 'Ivan Reese Russel-Klein'
+                      example: Ivan Reese Russel-Klein
             PmtInf:
               type: object
               description: Payment Information
@@ -308,10 +219,10 @@ components:
                   type: string
                   minLength: 1
                   maxLength: 35
-                  example: '8cc4f6ffb4fd4e31b42aec0ed5d600a0123'
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
                 PmtMtd:
                   type: string
-                  example: 'TRA'
+                  example: TRA
                 Dbtr:
                   type: object
                   description: Debtor
@@ -319,7 +230,7 @@ components:
                     Nm:
                       type: string
                       maxLength: 140
-                      example: 'Ivan Reese Russel-Klein'
+                      example: Ivan Reese Russel-Klein
                 DbtrAcct:
                   type: object
                   description: Debtor Account
@@ -347,14 +258,92 @@ components:
                             MmbId:
                               type: string
                               maxLength: 36
-                              example: 'dfsp001'
+                              example: dfsp001
+    TransactionResponse:
+      type: object
+      description: Response returned after evaluating a transaction message
+      properties:
+        message:
+          type: string
+          description: Human-readable evaluation result message
+          example: Transaction is valid
+        data:
+          type: object
+          description: Additional evaluation data including rule results and typology scores
+          additionalProperties: true
+    Error:
+      type: object
+      description: Error response
+      properties:
+        data:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message description
+    ISO20022Pacs002:
+      type: object
+      description: ISO 20022 pacs.002.001.12 Financial Institution to Financial Institution Payment Status Report message.
+      required:
+      - FIToFIPmtSts
+      properties:
+        FIToFIPmtSts:
+          type: object
+          description: FI to FI Payment Status
+          required:
+          - GrpHdr
+          properties:
+            GrpHdr:
+              type: object
+              required:
+              - MsgId
+              - CreDtTm
+              properties:
+                MsgId:
+                  type: string
+                  minLength: 1
+                  maxLength: 35
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                CreDtTm:
+                  type: string
+                  format: date-time
+                  example: '2021-09-13T15:56:49.000Z'
+            TxInfAndSts:
+              type: object
+              description: Transaction Information and Status
+              properties:
+                OrgnlInstrId:
+                  type: string
+                  maxLength: 35
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                OrgnlEndToEndId:
+                  type: string
+                  maxLength: 35
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                TxSts:
+                  type: string
+                  enum:
+                  - ACCC
+                  - ACCP
+                  - ACFC
+                  - ACSC
+                  - ACSP
+                  - ACTC
+                  - ACWC
+                  - ACWP
+                  - BLCK
+                  - CANC
+                  - PATC
+                  - PDNG
+                  - PRES
+                  - RCVD
+                  - RJCT
+                  example: ACSC
     ISO20022Pain013:
       type: object
-      description: >-
-        ISO 20022 pain.013.001.09 Creditor Payment Activation Request message.
-        Used by creditors to request payment initiation from debtors.
+      description: ISO 20022 pain.013.001.09 Creditor Payment Activation Request message. Used by creditors to request payment initiation from debtors.
       required:
-        - CdtrPmtActvtnReq
+      - CdtrPmtActvtnReq
       properties:
         CdtrPmtActvtnReq:
           type: object
@@ -368,7 +357,7 @@ components:
                   type: string
                   minLength: 1
                   maxLength: 35
-                  example: '8cc4f6ffb4fd4e31b42aec0ed5d600a0123'
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
                 CreDtTm:
                   type: string
                   format: date-time
@@ -376,93 +365,31 @@ components:
                 NbOfTxs:
                   type: integer
                   example: 1
-    ISO20022Pacs002:
-      type: object
-      description: >-
-        ISO 20022 pacs.002.001.12 Financial Institution to Financial Institution
-        Payment Status Report message.
-      required:
-        - FIToFIPmtSts
-      properties:
-        FIToFIPmtSts:
-          type: object
-          description: FI to FI Payment Status
-          required:
-            - GrpHdr
-          properties:
-            GrpHdr:
-              type: object
-              required:
-                - MsgId
-                - CreDtTm
-              properties:
-                MsgId:
-                  type: string
-                  minLength: 1
-                  maxLength: 35
-                  example: '8cc4f6ffb4fd4e31b42aec0ed5d600a0123'
-                CreDtTm:
-                  type: string
-                  format: date-time
-                  example: '2021-09-13T15:56:49.000Z'
-            TxInfAndSts:
-              type: object
-              description: Transaction Information and Status
-              properties:
-                OrgnlInstrId:
-                  type: string
-                  maxLength: 35
-                  example: '8cc4f6ffb4fd4e31b42aec0ed5d600a0123'
-                OrgnlEndToEndId:
-                  type: string
-                  maxLength: 35
-                  example: '8cc4f6ffb4fd4e31b42aec0ed5d600a0123'
-                TxSts:
-                  type: string
-                  enum:
-                    - ACCC
-                    - ACCP
-                    - ACFC
-                    - ACSC
-                    - ACSP
-                    - ACTC
-                    - ACWC
-                    - ACWP
-                    - BLCK
-                    - CANC
-                    - PATC
-                    - PDNG
-                    - PRES
-                    - RCVD
-                    - RJCT
-                  example: ACSC
     ISO20022Pacs008:
       type: object
-      description: >-
-        ISO 20022 pacs.008.001.10 Financial Institution to Financial Institution
-        Customer Credit Transfer message.
+      description: ISO 20022 pacs.008.001.10 Financial Institution to Financial Institution Customer Credit Transfer message.
       required:
-        - FIToFICstmrCdtTrf
+      - FIToFICstmrCdtTrf
       properties:
         FIToFICstmrCdtTrf:
           type: object
           description: FI to FI Customer Credit Transfer
           required:
-            - GrpHdr
+          - GrpHdr
           properties:
             GrpHdr:
               type: object
               required:
-                - MsgId
-                - CreDtTm
-                - NbOfTxs
-                - SttlmInf
+              - MsgId
+              - CreDtTm
+              - NbOfTxs
+              - SttlmInf
               properties:
                 MsgId:
                   type: string
                   minLength: 1
                   maxLength: 35
-                  example: '8cc4f6ffb4fd4e31b42aec0ed5d600a0123'
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
                 CreDtTm:
                   type: string
                   format: date-time
@@ -473,13 +400,13 @@ components:
                 SttlmInf:
                   type: object
                   required:
-                    - SttlmMtd
+                  - SttlmMtd
                   properties:
                     SttlmMtd:
                       type: string
                       minLength: 4
                       maxLength: 4
-                      example: 'CLRG'
+                      example: CLRG
             CdtTrfTxInf:
               type: object
               description: Credit Transfer Transaction Information
@@ -490,11 +417,11 @@ components:
                     InstrId:
                       type: string
                       maxLength: 35
-                      example: '8cc4f6ffb4fd4e31b42aec0ed5d600a0123'
+                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
                     EndToEndId:
                       type: string
                       maxLength: 35
-                      example: '8cc4f6ffb4fd4e31b42aec0ed5d600a0123'
+                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
                 Dbtr:
                   type: object
                   description: Debtor
@@ -502,7 +429,7 @@ components:
                     Nm:
                       type: string
                       maxLength: 140
-                      example: 'Ivan Reese Russel-Klein'
+                      example: Ivan Reese Russel-Klein
                 Cdtr:
                   type: object
                   description: Creditor
@@ -512,4 +439,4 @@ components:
                       maxLength: 140
                 ChrgBr:
                   type: string
-                  example: 'DEBT'
+                  example: DEBT
