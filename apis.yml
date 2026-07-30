@@ -7,9 +7,21 @@ description: >-
   with rule processors, typology scoring, and case management integration. Built to ISO 20022 standards for maximum
   financial messaging interoperability.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tazama.png
 tags:
 - Financial Technology
 - Fraud Detection
@@ -24,40 +36,12 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: tazama:transaction-monitoring-service
-  name: Tazama Transaction Monitoring Service API
-  description: >-
-    The core API for ingesting real-time ISO 20022 financial transaction messages into the Tazama platform for fraud
-    detection and AML compliance. Accepts pain.001, pain.013, pacs.008, and pacs.002 message types from financial
-    service providers including banks, remitters, mobile money operators, clearing houses, and payment switches.
-    Validates messages, routes them through configurable rule processors, and returns fraud and AML evaluation
-    results.
-  humanURL: https://tazama.org/products/
-  baseURL: http://localhost:5000
-  tags:
-  - Transaction Monitoring
-  - ISO 20022
-  - Fraud Detection
-  - Real Time
-  properties:
-  - type: Documentation
-    url: https://tazama.org/products/
-  - type: GitHubRepository
-    url: https://github.com/tazama-lf/tms-service
-  - type: OpenAPI
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/openapi/tazama-transaction-monitoring-service-openapi.yml
-  - url: graphql/tazama-graphql.md
-    type: GraphQL
-  contact:
-  - FN: Tazama Support
-    url: https://tazama.org
 - aid: tazama:admin-service
   name: Tazama Admin Service API
   description: >-
-    Administrative API for managing and configuring the Tazama platform. Supports configuration of rule processors,
-    typology definitions, network maps, and system administration. Swagger documentation available at the admin
-    service endpoint.
+    Administrative API for managing and configuring the Tazama platform. Supports configuration of rule
+    processors, typology definitions, network maps, and system administration. Swagger documentation available
+    at the admin service endpoint.
   humanURL: https://github.com/tazama-lf/admin-service
   baseURL: http://localhost:5100
   tags:
@@ -72,6 +56,38 @@ apis:
   contact:
   - FN: Tazama Support
     url: https://tazama.org
+- aid: tazama:tazama-health-api
+  name: Tazama Health API
+  description: Service health check operations
+  humanURL: https://tazama.org/products/
+  baseURL: http://localhost:5000
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/tazama-health-api-openapi.yml
+  - type: Documentation
+    url: https://tazama.org/products/
+  - type: GitHubRepository
+    url: https://github.com/tazama-lf/tms-service
+  - type: GraphQL
+    url: graphql/tazama-graphql.md
+- aid: tazama:tazama-transaction-evaluation-api
+  name: Tazama Transaction Evaluation API
+  description: ISO 20022 transaction message evaluation for fraud and AML detection
+  humanURL: https://tazama.org/products/
+  baseURL: http://localhost:5000
+  tags:
+  - Transaction Evaluation
+  properties:
+  - type: OpenAPI
+    url: openapi/tazama-transaction-evaluation-api-openapi.yml
+  - type: Documentation
+    url: https://tazama.org/products/
+  - type: GitHubRepository
+    url: https://github.com/tazama-lf/tms-service
+  - type: GraphQL
+    url: graphql/tazama-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/tazama-agentic-access.yml
