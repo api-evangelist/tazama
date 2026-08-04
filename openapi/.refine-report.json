@@ -1,0 +1,16 @@
+{
+  "provider": "tazama",
+  "sources": [
+    "tazama-health-api-openapi.yml",
+    "tazama-transaction-evaluation-api-openapi.yml"
+  ],
+  "outputs": [
+    "tazama-health-api-openapi.yml",
+    "tazama-transaction-evaluation-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
