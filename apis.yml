@@ -89,6 +89,9 @@ apis:
   - type: GraphQL
     url: graphql/tazama-graphql.md
 common:
+- type: License
+  name: Apache-2.0
+  url: https://github.com/tazama-lf/admin-service/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/tazama-agentic-access.yml
 - type: DomainSecurity
