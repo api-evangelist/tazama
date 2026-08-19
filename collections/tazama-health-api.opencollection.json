@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tazama Transaction Monitoring Service Health API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Service Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:5000/"
+          },
+          "docs": "Check if the Transaction Monitoring Service is up and running correctly."
+        },
+        {
+          "info": {
+            "name": "Get Health Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:5000/health"
+          },
+          "docs": "Check the health status of the Transaction Monitoring Service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
