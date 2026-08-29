@@ -7,6 +7,19 @@ description: >-
   with rule processors, typology scoring, and case management integration. Built to ISO 20022 standards for maximum
   financial messaging interoperability.
 type: Index
+deliveryModel:
+  model: self-hosted
+  license: Apache-2.0
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
@@ -98,6 +111,14 @@ apis:
   - type: GraphQL
     url: graphql/tazama-graphql.md
 common:
+- type: IssueTracker
+  url: https://github.com/tazama-lf/admin-service/issues
+- type: Releases
+  url: https://github.com/tazama-lf/admin-service/releases
+- type: CodeOfConduct
+  url: https://github.com/tazama-lf/.github/blob/main/CODE_OF_CONDUCT.md
+- type: ContributionGuide
+  url: https://github.com/tazama-lf/.github/blob/main/CONTRIBUTING.md
 - type: License
   name: Apache-2.0
   url: https://github.com/tazama-lf/admin-service/blob/main/LICENSE
