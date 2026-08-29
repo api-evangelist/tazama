@@ -111,6 +111,9 @@ apis:
   - type: GraphQL
     url: graphql/tazama-graphql.md
 common:
+- type: CapabilityMap
+  url: capabilities/tazama-capability-edges.yml
+  name: Tazama Business Capability Map
 - type: IssueTracker
   url: https://github.com/tazama-lf/admin-service/issues
 - type: Releases

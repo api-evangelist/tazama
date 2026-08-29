@@ -1,0 +1,27 @@
+slug: tazama
+provider: Tazama
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Transaction Evaluation
+  spec_file: tazama-transaction-evaluation-api-openapi.yml
+  capability_id: BC-1400
+  capability_id_l1: BC-1400
+  capability_name: Financial Crime Management
+  confidence: 0.9
+  evidence: '"ingests real-time ISO 20022 financial transaction messages for fraud detection and AML compliance
+    ... routes them through configurable rule processors, and returns fraud and AML evaluation results";
+    POST /v1/evaluate/iso20022/pacs.008.001.10'
+  reason: Operations submit payment messages for rule-based fraud and AML evaluation — squarely financial
+    crime management. Evidence names both AML transaction monitoring and fraud detection, so no single
+    L2 is asserted.
