@@ -1,11 +1,10 @@
 aid: tazama
 name: Tazama
-description: >-
-  Tazama is the first open source platform for real-time financial monitoring and fraud detection, launched by Linux
-  Foundation Charities with support from the Bill and Melinda Gates Foundation. It provides real-time fraud management,
-  AML compliance, and cost-effective monitoring of digital financial transactions through a microservices architecture
-  with rule processors, typology scoring, and case management integration. Built to ISO 20022 standards for maximum
-  financial messaging interoperability.
+description: Tazama is the first open source platform for real-time financial monitoring and fraud detection,
+  launched by Linux Foundation Charities with support from the Bill and Melinda Gates Foundation. It provides
+  real-time fraud management, AML compliance, and cost-effective monitoring of digital financial transactions
+  through a microservices architecture with rule processors, typology scoring, and case management integration.
+  Built to ISO 20022 standards for maximum financial messaging interoperability.
 type: Index
 deliveryModel:
   model: self-hosted
@@ -54,16 +53,15 @@ tags_raw:
 - ISO 20022
 - Real Time
 created: '2026-03-16'
-modified: '2026-05-19'
+modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 apis:
 - aid: tazama:admin-service
   name: Tazama Admin Service API
-  description: >-
-    Administrative API for managing and configuring the Tazama platform. Supports configuration of rule
-    processors, typology definitions, network maps, and system administration. Swagger documentation available
-    at the admin service endpoint.
+  description: Administrative API for managing and configuring the Tazama platform. Supports configuration
+    of rule processors, typology definitions, network maps, and system administration. Swagger documentation
+    available at the admin service endpoint.
   humanURL: https://github.com/tazama-lf/admin-service
   baseURL: http://localhost:5100
   tags:
@@ -111,6 +109,8 @@ apis:
   - type: GraphQL
     url: graphql/tazama-graphql.md
 common:
+- type: Website
+  url: https://tazama.org
 - type: CapabilityMap
   url: capabilities/tazama-capability-edges.yml
   name: Tazama Business Capability Map
@@ -149,15 +149,13 @@ common:
   url: https://www.linuxfoundation.org/press/linux-foundation-launches-tazama-for-real-time-fraud-management
 - type: OpenAPI
   name: Tazama TMS OpenAPI Specification
-  url: >-
-    https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/openapi/tazama-transaction-monitoring-service-openapi.yml
+  url: https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/openapi/tazama-transaction-monitoring-service-openapi.yml
 - type: Vocabulary
   name: Tazama Vocabulary
   url: https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/vocabulary/tazama-vocabulary.yml
 - type: JSONSchema
   name: Transaction Response Schema
-  url: >-
-    https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/json-schema/tazama-transaction-response-schema.json
+  url: https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/json-schema/tazama-transaction-response-schema.json
 - type: JSONLDContext
   name: Tazama JSON-LD Context
   url: https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/json-ld/tazama-context.jsonld
