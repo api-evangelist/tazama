@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tazama Transaction Monitoring Service Health Transaction Evaluation API
+  title: Tazama Transaction Monitoring Service Transaction…
   description: The Tazama Transaction Monitoring Service (TMS) API ingests real-time ISO 20022 financial transaction messages for fraud detection and AML compliance. Supports pain.001, pain.013, pacs.008, and pacs.002 message types from financial service providers including banks, remitters, mobile money operators, clearing houses, and payment switches. The service validates messages, routes them through configurable rule processors, and returns fraud and AML evaluation results.
   version: 0.1.0
   contact:
@@ -157,39 +157,26 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized - Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad Request - Invalid message format or missing required fields
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    ISO20022Pain001:
+    ISO20022Pacs008:
       type: object
-      description: ISO 20022 pain.001.001.11 Customer Credit Transfer Initiation message. Used for initiating credit transfers from a debtor to one or more creditors.
+      description: ISO 20022 pacs.008.001.10 Financial Institution to Financial Institution Customer Credit Transfer message.
       required:
-      - CstmrCdtTrfInitn
+      - FIToFICstmrCdtTrf
       properties:
-        CstmrCdtTrfInitn:
+        FIToFICstmrCdtTrf:
           type: object
-          description: Customer Credit Transfer Initiation
+          description: FI to FI Customer Credit Transfer
+          required:
+          - GrpHdr
           properties:
             GrpHdr:
               type: object
-              description: Group Header
+              required:
+              - MsgId
+              - CreDtTm
+              - NbOfTxs
+              - SttlmInf
               properties:
                 MsgId:
                   type: string
@@ -199,30 +186,35 @@ components:
                 CreDtTm:
                   type: string
                   format: date-time
-                  example: '2021-10-07T09:25:31.000Z'
+                  example: '2021-11-09T09:25:31.000Z'
                 NbOfTxs:
                   type: integer
                   example: 1
-                InitgPty:
+                SttlmInf:
                   type: object
-                  description: Initiating Party
+                  required:
+                  - SttlmMtd
                   properties:
-                    Nm:
+                    SttlmMtd:
                       type: string
-                      maxLength: 140
-                      example: Ivan Reese Russel-Klein
-            PmtInf:
+                      minLength: 4
+                      maxLength: 4
+                      example: CLRG
+            CdtTrfTxInf:
               type: object
-              description: Payment Information
+              description: Credit Transfer Transaction Information
               properties:
-                PmtInfId:
-                  type: string
-                  minLength: 1
-                  maxLength: 35
-                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
-                PmtMtd:
-                  type: string
-                  example: TRA
+                PmtId:
+                  type: object
+                  properties:
+                    InstrId:
+                      type: string
+                      maxLength: 35
+                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                    EndToEndId:
+                      type: string
+                      maxLength: 35
+                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
                 Dbtr:
                   type: object
                   description: Debtor
@@ -231,46 +223,16 @@ components:
                       type: string
                       maxLength: 140
                       example: Ivan Reese Russel-Klein
-                DbtrAcct:
+                Cdtr:
                   type: object
-                  description: Debtor Account
+                  description: Creditor
                   properties:
-                    Id:
-                      type: object
-                      properties:
-                        Othr:
-                          type: object
-                          properties:
-                            Id:
-                              type: string
-                              maxLength: 35
-                              example: '+27783078685'
-                DbtrAgt:
-                  type: object
-                  description: Debtor Agent
-                  properties:
-                    FinInstnId:
-                      type: object
-                      properties:
-                        ClrSysMmbId:
-                          type: object
-                          properties:
-                            MmbId:
-                              type: string
-                              maxLength: 36
-                              example: dfsp001
-    TransactionResponse:
-      type: object
-      description: Response returned after evaluating a transaction message
-      properties:
-        message:
-          type: string
-          description: Human-readable evaluation result message
-          example: Transaction is valid
-        data:
-          type: object
-          description: Additional evaluation data including rule results and typology scores
-          additionalProperties: true
+                    Nm:
+                      type: string
+                      maxLength: 140
+                ChrgBr:
+                  type: string
+                  example: DEBT
     Error:
       type: object
       description: Error response
@@ -365,25 +327,31 @@ components:
                 NbOfTxs:
                   type: integer
                   example: 1
-    ISO20022Pacs008:
+    TransactionResponse:
       type: object
-      description: ISO 20022 pacs.008.001.10 Financial Institution to Financial Institution Customer Credit Transfer message.
-      required:
-      - FIToFICstmrCdtTrf
+      description: Response returned after evaluating a transaction message
       properties:
-        FIToFICstmrCdtTrf:
+        message:
+          type: string
+          description: Human-readable evaluation result message
+          example: Transaction is valid
+        data:
           type: object
-          description: FI to FI Customer Credit Transfer
-          required:
-          - GrpHdr
+          description: Additional evaluation data including rule results and typology scores
+          additionalProperties: true
+    ISO20022Pain001:
+      type: object
+      description: ISO 20022 pain.001.001.11 Customer Credit Transfer Initiation message. Used for initiating credit transfers from a debtor to one or more creditors.
+      required:
+      - CstmrCdtTrfInitn
+      properties:
+        CstmrCdtTrfInitn:
+          type: object
+          description: Customer Credit Transfer Initiation
           properties:
             GrpHdr:
               type: object
-              required:
-              - MsgId
-              - CreDtTm
-              - NbOfTxs
-              - SttlmInf
+              description: Group Header
               properties:
                 MsgId:
                   type: string
@@ -393,35 +361,30 @@ components:
                 CreDtTm:
                   type: string
                   format: date-time
-                  example: '2021-11-09T09:25:31.000Z'
+                  example: '2021-10-07T09:25:31.000Z'
                 NbOfTxs:
                   type: integer
                   example: 1
-                SttlmInf:
+                InitgPty:
                   type: object
-                  required:
-                  - SttlmMtd
+                  description: Initiating Party
                   properties:
-                    SttlmMtd:
+                    Nm:
                       type: string
-                      minLength: 4
-                      maxLength: 4
-                      example: CLRG
-            CdtTrfTxInf:
+                      maxLength: 140
+                      example: Ivan Reese Russel-Klein
+            PmtInf:
               type: object
-              description: Credit Transfer Transaction Information
+              description: Payment Information
               properties:
-                PmtId:
-                  type: object
-                  properties:
-                    InstrId:
-                      type: string
-                      maxLength: 35
-                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
-                    EndToEndId:
-                      type: string
-                      maxLength: 35
-                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                PmtInfId:
+                  type: string
+                  minLength: 1
+                  maxLength: 35
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                PmtMtd:
+                  type: string
+                  example: TRA
                 Dbtr:
                   type: object
                   description: Debtor
@@ -430,13 +393,50 @@ components:
                       type: string
                       maxLength: 140
                       example: Ivan Reese Russel-Klein
-                Cdtr:
+                DbtrAcct:
                   type: object
-                  description: Creditor
+                  description: Debtor Account
                   properties:
-                    Nm:
-                      type: string
-                      maxLength: 140
-                ChrgBr:
-                  type: string
-                  example: DEBT
+                    Id:
+                      type: object
+                      properties:
+                        Othr:
+                          type: object
+                          properties:
+                            Id:
+                              type: string
+                              maxLength: 35
+                              example: '+27783078685'
+                DbtrAgt:
+                  type: object
+                  description: Debtor Agent
+                  properties:
+                    FinInstnId:
+                      type: object
+                      properties:
+                        ClrSysMmbId:
+                          type: object
+                          properties:
+                            MmbId:
+                              type: string
+                              maxLength: 36
+                              example: dfsp001
+  responses:
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad Request - Invalid message format or missing required fields
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized - Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

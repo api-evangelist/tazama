@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Tazama Transaction Monitoring Service Health API
   description: The Tazama Transaction Monitoring Service (TMS) API ingests real-time ISO 20022 financial transaction messages for fraud detection and AML compliance. Supports pain.001, pain.013, pacs.008, and pacs.002 message types from financial service providers including banks, remitters, mobile money operators, clearing houses, and payment switches. The service validates messages, routes them through configurable rule processors, and returns fraud and AML evaluation results.
