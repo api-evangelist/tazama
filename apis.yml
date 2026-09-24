@@ -37,9 +37,9 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tazama.png
 tags:
 - Financial Technology
 - Fraud Detection
-- Anti-Money Laundering
+- AML
 - Linux Foundation
-- Open-Source
+- Open Source
 - Transaction Monitoring
 - ISO 20022
 - Real-Time
@@ -52,6 +52,7 @@ tags_raw:
 - Transaction Monitoring
 - ISO 20022
 - Real Time
+- Open-Source
 created: '2026-03-16'
 modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/apis.yml
@@ -90,8 +91,6 @@ apis:
     url: https://tazama.org/products/
   - type: GitHubRepository
     url: https://github.com/tazama-lf/tms-service
-  - type: GraphQL
-    url: graphql/tazama-graphql.md
 - aid: tazama:tazama-transaction-evaluation-api
   name: Tazama Transaction Evaluation API
   description: ISO 20022 transaction message evaluation for fraud and AML detection
@@ -106,8 +105,6 @@ apis:
     url: https://tazama.org/products/
   - type: GitHubRepository
     url: https://github.com/tazama-lf/tms-service
-  - type: GraphQL
-    url: graphql/tazama-graphql.md
 common:
 - type: Website
   url: https://tazama.org
