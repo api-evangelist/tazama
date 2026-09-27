@@ -57,6 +57,16 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      description: Error response
+      properties:
+        data:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message description
     Health:
       type: object
       description: Service health status response
@@ -68,13 +78,3 @@ components:
           - DOWN
           description: Current service status
           example: UP
-    Error:
-      type: object
-      description: Error response
-      properties:
-        data:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error message description
