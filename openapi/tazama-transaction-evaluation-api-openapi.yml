@@ -158,6 +158,187 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
+    TransactionResponse:
+      type: object
+      description: Response returned after evaluating a transaction message
+      properties:
+        message:
+          type: string
+          description: Human-readable evaluation result message
+          example: Transaction is valid
+        data:
+          type: object
+          description: Additional evaluation data including rule results and typology scores
+          additionalProperties: true
+    Error:
+      type: object
+      description: Error response
+      properties:
+        data:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message description
+    ISO20022Pacs002:
+      type: object
+      description: ISO 20022 pacs.002.001.12 Financial Institution to Financial Institution Payment Status Report message.
+      required:
+      - FIToFIPmtSts
+      properties:
+        FIToFIPmtSts:
+          type: object
+          description: FI to FI Payment Status
+          required:
+          - GrpHdr
+          properties:
+            GrpHdr:
+              type: object
+              required:
+              - MsgId
+              - CreDtTm
+              properties:
+                MsgId:
+                  type: string
+                  minLength: 1
+                  maxLength: 35
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                CreDtTm:
+                  type: string
+                  format: date-time
+                  example: '2021-09-13T15:56:49.000Z'
+            TxInfAndSts:
+              type: object
+              description: Transaction Information and Status
+              properties:
+                OrgnlInstrId:
+                  type: string
+                  maxLength: 35
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                OrgnlEndToEndId:
+                  type: string
+                  maxLength: 35
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                TxSts:
+                  type: string
+                  enum:
+                  - ACCC
+                  - ACCP
+                  - ACFC
+                  - ACSC
+                  - ACSP
+                  - ACTC
+                  - ACWC
+                  - ACWP
+                  - BLCK
+                  - CANC
+                  - PATC
+                  - PDNG
+                  - PRES
+                  - RCVD
+                  - RJCT
+                  example: ACSC
+    ISO20022Pain013:
+      type: object
+      description: ISO 20022 pain.013.001.09 Creditor Payment Activation Request message. Used by creditors to request payment initiation from debtors.
+      required:
+      - CdtrPmtActvtnReq
+      properties:
+        CdtrPmtActvtnReq:
+          type: object
+          description: Creditor Payment Activation Request
+          properties:
+            GrpHdr:
+              type: object
+              description: Group Header
+              properties:
+                MsgId:
+                  type: string
+                  minLength: 1
+                  maxLength: 35
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                CreDtTm:
+                  type: string
+                  format: date-time
+                  example: '2021-10-07T09:25:31.000Z'
+                NbOfTxs:
+                  type: integer
+                  example: 1
+    ISO20022Pacs008:
+      type: object
+      description: ISO 20022 pacs.008.001.10 Financial Institution to Financial Institution Customer Credit Transfer message.
+      required:
+      - FIToFICstmrCdtTrf
+      properties:
+        FIToFICstmrCdtTrf:
+          type: object
+          description: FI to FI Customer Credit Transfer
+          required:
+          - GrpHdr
+          properties:
+            GrpHdr:
+              type: object
+              required:
+              - MsgId
+              - CreDtTm
+              - NbOfTxs
+              - SttlmInf
+              properties:
+                MsgId:
+                  type: string
+                  minLength: 1
+                  maxLength: 35
+                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                CreDtTm:
+                  type: string
+                  format: date-time
+                  example: '2021-11-09T09:25:31.000Z'
+                NbOfTxs:
+                  type: integer
+                  example: 1
+                SttlmInf:
+                  type: object
+                  required:
+                  - SttlmMtd
+                  properties:
+                    SttlmMtd:
+                      type: string
+                      minLength: 4
+                      maxLength: 4
+                      example: CLRG
+            CdtTrfTxInf:
+              type: object
+              description: Credit Transfer Transaction Information
+              properties:
+                PmtId:
+                  type: object
+                  properties:
+                    InstrId:
+                      type: string
+                      maxLength: 35
+                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                    EndToEndId:
+                      type: string
+                      maxLength: 35
+                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
+                Dbtr:
+                  type: object
+                  description: Debtor
+                  properties:
+                    Nm:
+                      type: string
+                      maxLength: 140
+                      example: Ivan Reese Russel-Klein
+                Cdtr:
+                  type: object
+                  description: Creditor
+                  properties:
+                    Nm:
+                      type: string
+                      maxLength: 140
+                ChrgBr:
+                  type: string
+                  example: DEBT
     ISO20022Pain001:
       type: object
       description: ISO 20022 pain.001.001.11 Customer Credit Transfer Initiation message. Used for initiating credit transfers from a debtor to one or more creditors.
@@ -240,196 +421,15 @@ components:
                               type: string
                               maxLength: 36
                               example: dfsp001
-    ISO20022Pacs002:
-      type: object
-      description: ISO 20022 pacs.002.001.12 Financial Institution to Financial Institution Payment Status Report message.
-      required:
-      - FIToFIPmtSts
-      properties:
-        FIToFIPmtSts:
-          type: object
-          description: FI to FI Payment Status
-          required:
-          - GrpHdr
-          properties:
-            GrpHdr:
-              type: object
-              required:
-              - MsgId
-              - CreDtTm
-              properties:
-                MsgId:
-                  type: string
-                  minLength: 1
-                  maxLength: 35
-                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
-                CreDtTm:
-                  type: string
-                  format: date-time
-                  example: '2021-09-13T15:56:49.000Z'
-            TxInfAndSts:
-              type: object
-              description: Transaction Information and Status
-              properties:
-                OrgnlInstrId:
-                  type: string
-                  maxLength: 35
-                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
-                OrgnlEndToEndId:
-                  type: string
-                  maxLength: 35
-                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
-                TxSts:
-                  type: string
-                  enum:
-                  - ACCC
-                  - ACCP
-                  - ACFC
-                  - ACSC
-                  - ACSP
-                  - ACTC
-                  - ACWC
-                  - ACWP
-                  - BLCK
-                  - CANC
-                  - PATC
-                  - PDNG
-                  - PRES
-                  - RCVD
-                  - RJCT
-                  example: ACSC
-    TransactionResponse:
-      type: object
-      description: Response returned after evaluating a transaction message
-      properties:
-        message:
-          type: string
-          description: Human-readable evaluation result message
-          example: Transaction is valid
-        data:
-          type: object
-          description: Additional evaluation data including rule results and typology scores
-          additionalProperties: true
-    ISO20022Pacs008:
-      type: object
-      description: ISO 20022 pacs.008.001.10 Financial Institution to Financial Institution Customer Credit Transfer message.
-      required:
-      - FIToFICstmrCdtTrf
-      properties:
-        FIToFICstmrCdtTrf:
-          type: object
-          description: FI to FI Customer Credit Transfer
-          required:
-          - GrpHdr
-          properties:
-            GrpHdr:
-              type: object
-              required:
-              - MsgId
-              - CreDtTm
-              - NbOfTxs
-              - SttlmInf
-              properties:
-                MsgId:
-                  type: string
-                  minLength: 1
-                  maxLength: 35
-                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
-                CreDtTm:
-                  type: string
-                  format: date-time
-                  example: '2021-11-09T09:25:31.000Z'
-                NbOfTxs:
-                  type: integer
-                  example: 1
-                SttlmInf:
-                  type: object
-                  required:
-                  - SttlmMtd
-                  properties:
-                    SttlmMtd:
-                      type: string
-                      minLength: 4
-                      maxLength: 4
-                      example: CLRG
-            CdtTrfTxInf:
-              type: object
-              description: Credit Transfer Transaction Information
-              properties:
-                PmtId:
-                  type: object
-                  properties:
-                    InstrId:
-                      type: string
-                      maxLength: 35
-                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
-                    EndToEndId:
-                      type: string
-                      maxLength: 35
-                      example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
-                Dbtr:
-                  type: object
-                  description: Debtor
-                  properties:
-                    Nm:
-                      type: string
-                      maxLength: 140
-                      example: Ivan Reese Russel-Klein
-                Cdtr:
-                  type: object
-                  description: Creditor
-                  properties:
-                    Nm:
-                      type: string
-                      maxLength: 140
-                ChrgBr:
-                  type: string
-                  example: DEBT
-    ISO20022Pain013:
-      type: object
-      description: ISO 20022 pain.013.001.09 Creditor Payment Activation Request message. Used by creditors to request payment initiation from debtors.
-      required:
-      - CdtrPmtActvtnReq
-      properties:
-        CdtrPmtActvtnReq:
-          type: object
-          description: Creditor Payment Activation Request
-          properties:
-            GrpHdr:
-              type: object
-              description: Group Header
-              properties:
-                MsgId:
-                  type: string
-                  minLength: 1
-                  maxLength: 35
-                  example: 8cc4f6ffb4fd4e31b42aec0ed5d600a0123
-                CreDtTm:
-                  type: string
-                  format: date-time
-                  example: '2021-10-07T09:25:31.000Z'
-                NbOfTxs:
-                  type: integer
-                  example: 1
-    Error:
-      type: object
-      description: Error response
-      properties:
-        data:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error message description
   responses:
-    InternalServerError:
-      description: Internal Server Error
+    BadRequest:
+      description: Bad Request - Invalid message format or missing required fields
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad Request - Invalid message format or missing required fields
+    InternalServerError:
+      description: Internal Server Error
       content:
         application/json:
           schema:
