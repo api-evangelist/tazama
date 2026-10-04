@@ -158,6 +158,16 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
+    Error:
+      type: object
+      description: Error response
+      properties:
+        data:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message description
     TransactionResponse:
       type: object
       description: Response returned after evaluating a transaction message
@@ -170,16 +180,6 @@ components:
           type: object
           description: Additional evaluation data including rule results and typology scores
           additionalProperties: true
-    Error:
-      type: object
-      description: Error response
-      properties:
-        data:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error message description
     ISO20022Pacs002:
       type: object
       description: ISO 20022 pacs.002.001.12 Financial Institution to Financial Institution Payment Status Report message.
@@ -422,14 +422,14 @@ components:
                               maxLength: 36
                               example: dfsp001
   responses:
-    BadRequest:
-      description: Bad Request - Invalid message format or missing required fields
+    InternalServerError:
+      description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    InternalServerError:
-      description: Internal Server Error
+    BadRequest:
+      description: Bad Request - Invalid message format or missing required fields
       content:
         application/json:
           schema:
