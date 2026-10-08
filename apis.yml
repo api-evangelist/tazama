@@ -106,6 +106,12 @@ apis:
   - type: GitHubRepository
     url: https://github.com/tazama-lf/tms-service
 common:
+- type: Plans
+  url: plans/tazama-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/tazama-rate-limits.yml
+- type: FinOps
+  url: finops/tazama-finops.yml
 - type: Website
   url: https://tazama.org
 - type: CapabilityMap
