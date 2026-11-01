@@ -1,4 +1,4 @@
-# Tazama (tazama)
+# Tazama
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,88 +66,162 @@
 
 Tazama is the first open source platform for real-time financial monitoring and fraud detection, launched by Linux Foundation Charities with support from the Bill and Melinda Gates Foundation. It provides real-time fraud management, AML compliance, and cost-effective monitoring of digital financial transactions through a microservices architecture with rule processors, typology scoring, and case management integration. Built to ISO 20022 standards for maximum financial messaging interoperability.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/apis.yml)
+**Areas:** Financial Technology · Fraud Prevention · AML · Linux Foundation · Open Source · Transaction Monitoring · ISO 20022 · Real-Time
 
-## Scope
+## Tazama on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Tazama is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/tazama/](https://apis.io/providers/tazama/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Financial Technology
-- Fraud Detection
-- Anti-Money Laundering
-- Linux Foundation
-- Open Source
-- Transaction Monitoring
-- ISO 20022
-- Real Time
+- [Tazama Admin Service API](https://apis.io/apis/tazama/admin-service/) — Administrative API for managing and configuring the Tazama platform. Supports configuration of rule processors, typology definitions, network maps, and…
+- [Tazama Health API](https://apis.io/apis/tazama/tazama-health-api/) — Service health check operations
+- [Tazama Transaction Evaluation API](https://apis.io/apis/tazama/tazama-transaction-evaluation-api/) — ISO 20022 transaction message evaluation for fraud and AML detection
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### Tazama Transaction Monitoring Service API
+GraphQL schemas.
 
-The core API for ingesting real-time ISO 20022 financial transaction messages into the Tazama platform for fraud detection and AML compliance. Accepts pain.001, pain.013, pacs.008, and pacs.002 message types from financial service providers including banks, remitters, mobile money operators, clearing houses, and payment switches. Validates messages, routes them through configurable rule processors, and returns fraud and AML evaluation results.
+- [Moved to /providers/tazama/](https://apis.io/graphqls/tazama/tazama-graphql/)
 
-- **Human URL:** [https://tazama.org/products/](https://tazama.org/products/)
-- **Base URL:** `http://localhost:5000`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Transaction Monitoring
-- ISO 20022
-- Fraud Detection
-- Real Time
+- [Tazama Agentic Access](https://apis.io/agentic-access/tazama/tazama-agentic-access/)
 
-#### Properties
+#### JSON Schema (2)
 
+The data models the API reads and writes.
+
+- [ISO 20022 pain.001.001.11 Customer Credit Transfer Initiation](https://apis.io/schemas/tazama/tazama-iso20022-pain001/)
+- [Tazama Transaction Response](https://apis.io/schemas/tazama/tazama-transaction-response/)
+
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Tazama Transaction Response Structure](https://apis.io/json-structure/tazama/tazama-transaction-response-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Tazama Context](https://apis.io/jsonld/tazama/tazama-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Tazama Vocabulary](https://apis.io/vocabularies/tazama/tazama-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Tazama Evaluate Pacs008 Transaction Example](https://apis.io/examples/tazama/tazama-evaluate-pacs008-transaction-example/)
+- [Tazama Evaluate Pain001 Transaction Example](https://apis.io/examples/tazama/tazama-evaluate-pain001-transaction-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Tazama Transaction Monitoring Service Health API](https://apis.io/collections/tazama/open-tazama-health-api/)
+- [Tazama Transaction Monitoring Service Health Transaction Evaluation API](https://apis.io/collections/tazama/open-tazama-transaction-evaluation-api/)
+- [Tazama Transaction Monitoring Service API](https://apis.io/collections/tazama/open-tazama-transaction-monitoring-service/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Tazama — jsonschema rules](https://apis.io/rules/tazama/tazama-jsonschema-spectral-rules/)
+- [Tazama API Rules](https://apis.io/rules/tazama/tazama-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Tazama Domain Security](https://apis.io/security/tazama/tazama-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Tazama Plans Pricing](https://apis.io/plans/tazama/tazama-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Tazama Rate Limits](https://apis.io/rate-limits/tazama/tazama-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Tazama Finops](https://apis.io/finops/tazama/tazama-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://tazama.org)
 - [Documentation](https://tazama.org/products/)
-- [GitHub Repository](https://github.com/tazama-lf/tms-service)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/openapi/tazama-transaction-monitoring-service-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tazama-transaction-monitoring-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tazama-transaction-monitoring-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Blog](https://www.tazama.org/feed/)
 
-### Tazama Admin Service API
+## API Evangelist rating
 
-Administrative API for managing and configuring the Tazama platform. Supports configuration of rule processors, typology definitions, network maps, and system administration. Swagger documentation available at the admin service endpoint.
+**Kin Score 30.8** — thin · rubric 0.24.0 · scored 2026-10-17
 
-- **Human URL:** [https://github.com/tazama-lf/admin-service](https://github.com/tazama-lf/admin-service)
-- **Base URL:** `http://localhost:5100`
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 47.4 |
+| Contract governance | 27.3 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 7.9 |
 
-#### Tags
+**Agent readiness 20.4** — agent-aware
 
-- Administration
-- Configuration
-- Rule Management
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-#### Properties
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
 
-- [Documentation](https://github.com/tazama-lf/admin-service)
-- [GitHub Repository](https://github.com/tazama-lf/admin-service)
-- [Postman Collection](collections/tazama-transaction-monitoring-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tazama-transaction-monitoring-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/tazama/](https://apis.io/providers/tazama/).
 
-## Common Properties
+## How this profile is made
 
-- [LinkedIn](https://www.linkedin.com/company/tazama-org)
-- [Documentation](https://tazama.org/products/)
-- [Git Hub Org](https://github.com/tazama-lf)
-- [About](https://tazama.org/about/)
-- [Licensing](https://www.linuxfoundation.org/press/linux-foundation-launches-tazama-for-real-time-fraud-management)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/openapi/tazama-transaction-monitoring-service-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/vocabulary/tazama-vocabulary.yml)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/json-schema/tazama-transaction-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/json-ld/tazama-context.jsonld)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/tazama/refs/heads/main/rules/tazama-rules.yml)
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-## Maintainers
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Tazama: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/tazama/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
